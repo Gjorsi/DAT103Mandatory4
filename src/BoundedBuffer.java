@@ -16,27 +16,21 @@ public class BoundedBuffer {
         
         q = new ArrayDeque<>();
         
-        Thread p = new Thread(() -> {
+        new Thread(() -> {
             try {
                 produce();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        });
+        }).start();
         
-        Thread c = new Thread(() -> {
+        new Thread(() -> {
             try {
                 consume();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        });
-        
-        p.start();
-        c.start();
-        
-        p.join();
-        c.join();
+        }).start();
         
     }
 
