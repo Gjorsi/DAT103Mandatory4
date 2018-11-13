@@ -5,7 +5,7 @@ import java.util.concurrent.Semaphore;
 
 public class BoundedBuffer {
 
-    static final int n = 10;
+    static final int n = 10; // buffer size
     static final Semaphore mutex = new Semaphore(1); 
     static final Semaphore empty = new Semaphore(n);
     static final Semaphore full = new Semaphore(0);
